@@ -21,6 +21,7 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
+    bcrypt (3.1.11)
     bond (0.5.1)
     capybara (2.11.0)
       addressable
@@ -111,6 +112,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  bcrypt
   capybara
   database_cleaner!
   pg

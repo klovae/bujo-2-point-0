@@ -1,6 +1,7 @@
 ENV["SINATRA_ENV"] = "test"
 
 require_relative '../config/environment'
+require_all 'app'
 require 'rack/test'
 require 'capybara/rspec'
 require 'capybara/dsl'
@@ -27,7 +28,9 @@ RSpec.configure do |config|
   end
 
   config.order = 'default'
+  config.formatter = :documentation
 end
+
 
 def app
   Rack::Builder.parse_file('config.ru').first
