@@ -1,0 +1,56 @@
+<h1>Create an Account</h1>
+<h2>Start your digital Bullet Journal today!</h2>
+
+<% if flash.has?(:success) %>
+  <div class="success-message">
+    <%= flash[:success] %>
+  </div>
+<% elsif flash.has?(:error) %>
+  <div class="error-message">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+<form action="/signup" method="post">
+  <table>
+    <tr>
+      <td class="col-1">
+        <label>First Name:</label>
+      </td>
+      <td class="textbox">
+        <input type="text" name="first_name" value="">
+      </td>
+    </tr>
+    <tr>
+      <td class="col-1">
+        <label>Last Name:</label>
+      </td>
+      <td class="textbox">
+        <input type="text" name="last_name" value="">
+      </td>
+    </tr>
+    <tr>
+      <td class="col-1">
+        <label>Email:</label>
+      </td>
+      <td class="textbox">
+        <input type="email" name="email" value="">
+      </td>
+    </tr>
+    <tr>
+      <td class="col-1">
+        <label>Password</label>
+      </td>
+      <td class="textbox">
+        <input type="password" name="name" value="">
+      </td>
+    </tr>
+
+  </table>
+
+  <input type="submit" value="Submit">
+</form>
+
+<p>
+  <a href="/login">Already have an account? Log in here.</a>
+</p>
