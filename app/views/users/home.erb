@@ -1,0 +1,24 @@
+<h1>Welcome <%= @user.first_name %>!</h1>
+
+<% if flash.has?(:success) %>
+  <div class="success-message">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+<% if @user.days.all.count == 0 %>
+<p>
+  First time on BuJo? <a href="#">Get a quick tutorial</a>!
+</p>
+<% end %>
+
+<ul>
+  <% #if @users.days.all.include?(day.date.today) %> <% #might need a helper method for this %>
+  <% #gonna need a conditionals all over this: if tomorrow.exists? View tomorrow, else, Start tomorrow's list %>
+  <li>Start today's list</li>
+  <li>View today's tasks</li>
+  <li>Start tomorrow's list</li>
+  <li>View tomorrow's list</li>
+  <li>View all open tasks</li>
+  <li>View index of days</li>
+</ul>

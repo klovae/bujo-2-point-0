@@ -1,4 +1,14 @@
-<h1>Log into Bujo 2.0</h1>
+<h1>Log into BuJo 2.0</h1>
+
+<% if flash.has?(:success) %>
+  <div class="success-message">
+    <%= flash[:success] %>
+  </div>
+<% elsif flash.has?(:error) %>
+  <div class="error-message">
+    <%= flash[:error] %>
+  </div>
+<% end %>
 
 <form action="/login" method="post">
   <table>
@@ -7,7 +17,7 @@
         <label>Email:</label>
       </td>
       <td class="textbox">
-        <input type="text" name="first_name" value="">
+        <input type="text" name="email" value="">
       </td>
     </tr>
     <tr>
@@ -15,11 +25,10 @@
         <label>Password:</label>
       </td>
       <td class="textbox">
-        <input type="text" name="last_name" value="">
+        <input type="password" name="password" value="">
       </td>
     </tr>
-
-      <input type="submit" value="Submit">
-      
   </table>
+
+  <input type="submit" value="Submit">
 </form>

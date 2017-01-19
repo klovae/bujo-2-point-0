@@ -14,10 +14,6 @@ describe User, type: :model do
       expect(User.create(:first_name => "Ryder", last_name: "Carroll", username: "rcarroll", email: nil, password: "this is a test")).to_not be_valid
     end
 
-    it "is invalid without a username" do
-      expect(User.create(first_name: "Ryder", last_name: "Carroll", username: nil, email: "ryder.carroll@bujo.com", password: "this is a test")).to_not be_valid
-    end
-
     it "is invalid without a password" do
       expect(User.create(first_name: "Ryder", last_name: "Carroll", username: "rcarroll", email: "ryder.carroll@bujo.com", password: nil)).to_not be_valid
     end
