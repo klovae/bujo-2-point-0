@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    use Rack::Flash
+    register Sinatra::Flash
     set :session_secret, "keep_track_of_all_your_stuff"
   end
 

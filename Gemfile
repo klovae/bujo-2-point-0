@@ -10,7 +10,7 @@ gem 'tux'
 gem 'thin'
 gem 'shotgun'
 gem 'pry'
-gem 'rack-flash3'
+gem 'sinatra-flash'
 gem 'bcrypt'
 
 group :development do

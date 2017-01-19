@@ -1,6 +1,6 @@
 <h1>Welcome <%= @user.first_name %>!</h1>
 
-<% if flash.has?(:success) %>
+<% if flash[:success] %>
   <div class="success-message">
     <%= flash[:success] %>
   </div>
