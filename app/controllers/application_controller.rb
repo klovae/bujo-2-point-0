@@ -15,6 +15,14 @@ class ApplicationController < Sinatra::Base
     def is_logged_in?(session)
       session.has_key?(:user_id)
     end
+
+    def today_list
+      Day.where(date: Date.today, user_id: current_user)
+    end
+
+    def tomorrow_list
+      Day.where(date: Date.tomorrow, user_id: current_user)
+    end
   end
 
   #Index Controller

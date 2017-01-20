@@ -13,12 +13,8 @@
 <% end %>
 
 <ul>
-  <% #if @users.days.all.include?(day.date.today) %> <% #might need a helper method for this %>
-  <% #gonna need a conditionals all over this: if tomorrow.exists? View tomorrow, else, Start tomorrow's list %>
-  <li>Start today's list</li>
-  <li>View today's tasks</li>
-  <li>Start tomorrow's list</li>
-  <li>View tomorrow's list</li>
-  <li>View all open tasks</li>
-  <li>View index of days</li>
+  <li><a href="/days/today">View today's list</a></li>
+  <li><a href="/days/tomorrow">View tomorrow's list</a></li>
+  <li><a href="/tasks">View all open tasks</a></li>
+  <li><a href="/days">View your index</a></li>
 </ul>

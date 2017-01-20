@@ -1,1 +1,9 @@
-<h1 class="day-title">Tasks for: <%= @day.date.strftime("%a, %B %-d, %Y") %></h1>
+<h1 class="day-title">Tasks for <%= @day.date.strftime("%a, %B %-d, %Y") %></h1>
+
+<a href="/days/<%= @day.id %>/tasks/new">Add a task</a>
+
+<% @day.tasks.all do |task| %>
+<div class="task">
+  <a href="/day/<%= @day.id %>/tasks/<%= task.id %>"><%= task.content %></a>
+</div>
+<% end %>
