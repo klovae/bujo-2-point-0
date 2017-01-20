@@ -1,0 +1,7 @@
+<h1>Index</h1>
+
+<% @days.each do |day| %>
+<div class="day-list">
+  <a href="/days/<%= day.id %>"><%= day.date.strftime("%a, %B %-d, %Y") %></a>
+</div>
+<% end %>

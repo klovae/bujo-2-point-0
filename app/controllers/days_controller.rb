@@ -1,7 +1,7 @@
 class DaysController < ApplicationController
 
   get "/days" do
-    @days = Day.find_each {|d| d.user_id == current_user.id}
+    @days = current_user.days.all
     erb :"/days/index"
   end
 
