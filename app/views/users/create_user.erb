@@ -1,17 +1,17 @@
 <h1>Create an Account</h1>
 <h2>Start your digital Bullet Journal today!</h2>
 
-<% if flash.has?(:success) %>
+<% if flash[:success] %>
   <div class="success-message">
     <%= flash[:success] %>
   </div>
-<% elsif flash.has?(:error) %>
+<% elsif flash[:error] %>
   <div class="error-message">
     <%= flash[:error] %>
   </div>
 <% end %>
 
-<form action="/signup">
+<form action="/signup" method="post">
   <table>
     <tr>
       <td class="col-1">

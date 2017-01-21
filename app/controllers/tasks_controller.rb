@@ -9,8 +9,8 @@ class TasksController < ApplicationController
     erb :"/tasks/create_task"
   end
 
-  get "/days/:id/tasks/:id/edit" do
-    @task = Task.find_by_id(params[:id])
+  get "/days/:id/tasks/:taskid/edit" do
+    @task = Task.find_by_id(params[:taskid])
     erb :"/tasks/edit_task"
   end
 
@@ -20,13 +20,13 @@ class TasksController < ApplicationController
   end
 
   patch "/days/:id/tasks" do
-    @task = Task.find_by_id(params[:id])
+    @task = Task.find_by_id(params[:taskid])
     redirect "/tasks/:id"
   end
 
   # Delete Item Controller
-  delete "/days/:id/tasks/:id/delete" do
-    @task = Task.find_by_id(params[:id])
+  delete "/days/:id/tasks/:taskid/delete" do
+    @task = Task.find_by_id(params[:taskid])
     redirect "/tasks"
   end
 

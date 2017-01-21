@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :days
+  has_many :tasks, through: :days
   has_secure_password
 
   validates :first_name, :presence => true

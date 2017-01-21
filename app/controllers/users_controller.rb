@@ -8,11 +8,6 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/home' do
-    @user = User.find_by_id(session[:user_id])
-    erb :'/users/home'
-  end
-
   post '/login' do
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
@@ -24,6 +19,13 @@ class UsersController < ApplicationController
       redirect '/login'
     end
   end
+
+  get '/home' do
+    @user = User.find_by_id(session[:user_id])
+    erb :'/users/home'
+  end
+
+
 
   get '/signup' do
     if !is_logged_in?(session)
@@ -49,9 +51,13 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    session.clear
-    flash[:success] = "Buh-bye now!"
-    redirect '/login'
+    if is_logged_in?(session)
+      session.clear
+      flash[:success] = "Buh-bye now!"
+      redirect '/login'
+    else
+      redirect '/'
+    end
   end
 
 
