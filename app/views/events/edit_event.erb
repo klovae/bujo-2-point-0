@@ -1,0 +1,9 @@
+<h1>Editing:</h1>
+
+<div class="">
+  <form action="/events/<%= @event.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <input type="text" name=":content" value="<%= @event.content %>">
+    <input type="submit" value="Update Event">
+  </form>
+</div>

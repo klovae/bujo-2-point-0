@@ -1,4 +1,4 @@
-<h1 class="day-title">Tasks for <%= @day.date.strftime("%a, %B %-d, %Y") %></h1>
+<h1 class="day-title"><%= @day.date.strftime("%a, %B %-d, %Y") %></h1>
 
 <% if flash[:success] %>
   <div class="success-message">
@@ -14,7 +14,9 @@
 <div class="task">
 
   <% if task.status == "complete" %>
-  X
+    <div class="indicator">
+      X
+    </div>
   <% else %>
   <form class="form-button" action="/tasks/<%= task.id %>/complete" method="post">
     <input type="hidden" name="_method" value="patch">
@@ -34,8 +36,33 @@
 </div>
 <% end %>
 
+<h2>Events</h2>
+
+<% @day.events.each do |event| %>
+<div class="event">
+  <div class="indicator">
+    O
+  </div>
+  <%= event.content %>
+  <div class="button">
+    <a href="/events/<%= event.id %>">EDIT</a>
+  </div>
+  <form class="form-button" action="/events/<%= event.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+  </form>
+</div>
+<% end %>
+
+
 <a href="/days/<%= @day.id %>/tasks/new">
   <div class="button">
     Add a task
+  </div>
+</a>
+
+<a href="/days/<%= @day.id %>/events/new">
+  <div class="button">
+    Add an event
   </div>
 </a>
