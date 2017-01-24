@@ -1,1 +1,14 @@
-This is where all your open tasks will be
+<h1>Open Tasks</h1>
+
+<% @tasks.each do |task| %>
+<div class="task">
+  <%= task.content %>
+  <div class="button">
+    <a href="/tasks/<%= task.id %>">EDIT</a>
+  </div>
+  <form class="form-button" action="/tasks/<%= task.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+  </form>
+</div>
+<% end %>

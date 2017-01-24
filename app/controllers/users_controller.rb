@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   get '/login' do
-    if !is_logged_in?(session)
+    if !is_logged_in?
       erb :'/users/login'
     else
       redirect '/home'
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
 
   get '/signup' do
-    if !is_logged_in?(session)
+    if !is_logged_in?
       erb :'/users/create_user'
     else
       redirect '/home'
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    if is_logged_in?(session)
+    if is_logged_in?
       session.clear
       flash[:success] = "Buh-bye now!"
       redirect '/login'

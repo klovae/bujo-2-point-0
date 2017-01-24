@@ -10,3 +10,4 @@ run ApplicationController
 use DaysController
 use TasksController
 use UsersController
+use EventsController

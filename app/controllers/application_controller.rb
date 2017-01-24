@@ -1,3 +1,5 @@
+require 'pry'
+
 class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
@@ -12,22 +14,17 @@ class ApplicationController < Sinatra::Base
       User.find(session[:user_id])
     end
 
-    def is_logged_in?(session)
+    def is_logged_in?
       session.has_key?(:user_id)
-    end
-
-    def today_list
-      Day.where(date: Date.today, user_id: current_user)
-    end
-
-    def tomorrow_list
-      Day.where(date: Date.tomorrow, user_id: current_user)
     end
   end
 
-  #Index Controller
   get "/" do
-    erb :index
+    if is_logged_in?
+      redirect "/home"
+    else
+      erb :index
+    end
   end
 
 end

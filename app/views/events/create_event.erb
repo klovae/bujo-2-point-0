@@ -1,0 +1,16 @@
+<h1>Add an Event</h1>
+
+<% if flash[:success] %>
+  <div class="success-message">
+    <%= flash[:success] %>
+  </div>
+<% elsif flash[:error] %>
+  <div class="error-message">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+<form action="/days/<%= @day.id %>/events" method="post">
+  <input type="text" name="content" value="<">
+  <input type="submit" value="Add Event">
+</form>
