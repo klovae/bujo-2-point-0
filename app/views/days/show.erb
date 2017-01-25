@@ -10,33 +10,40 @@
   </div>
 <% end %>
 
-<% @day.tasks.each do |task| %>
-<div class="task">
 
-  <% if task.status == "complete" %>
-    <div class="indicator">
-      X
-    </div>
-  <% else %>
-  <form class="form-button" action="/tasks/<%= task.id %>/complete" method="post">
-    <input type="hidden" name="_method" value="patch">
-    <input type="hidden" name="status" value="complete">
-    <input type="submit" value="&#8226;">
-  </form>
-  <% end %>
-
-  <%= task.content %>
-  <div class="button">
-    <a href="/tasks/<%= task.id %>">EDIT</a>
-  </div>
-  <form class="form-button" action="/tasks/<%= task.id %>/delete" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete">
-  </form>
-</div>
+<% if @day.tasks.all.count > 0 %>
+  <h2>Tasks</h2>
 <% end %>
 
-<h2>Events</h2>
+<% @day.tasks.each do |task| %>
+  <div class="task">
+
+    <% if task.status == "complete" %>
+      <div class="indicator">
+        X
+      </div>
+    <% else %>
+      <form class="form-button" action="/tasks/<%= task.id %>/complete" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <input type="hidden" name="status" value="complete">
+        <input type="submit" value="&#8226;">
+      </form>
+    <% end %>
+
+    <%= task.content %>
+    <div class="button">
+      <a href="/tasks/<%= task.id %>">EDIT</a>
+    </div>
+    <form class="form-button" action="/tasks/<%= task.id %>/delete" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete">
+    </form>
+  </div>
+<% end %>
+
+<% if @day.events.count > 0 %>
+  <h2>Events</h2>
+<% end %>
 
 <% @day.events.each do |event| %>
 <div class="event">

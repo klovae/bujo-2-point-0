@@ -1,0 +1,14 @@
+<h1>Update Your Settings</h1>
+
+<form action="/users/<%= current_user.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label>First Name: </label><input type="text" name="first_name" value="<%= current_user.first_name %>">
+  <label>Last Name: </label><input type="text" name="last_name" value="<%= current_user.last_name %>">
+  <label>Email: </label><input type="text" name="email" value="<%= current_user.email %>">
+  <p>
+    If you would like to change your password, please enter it into the field below:
+  </p>
+  <input type="password" name="password" value="<%= current_user.password_digest %>">
+  <label>Open tasks from past days can only be migrated: </label><input type="checkbox" name="past_migration" <%= 'checked' if current_user.past_migration = true %>>
+  <input type="submit" value="Update Settings">
+</form>

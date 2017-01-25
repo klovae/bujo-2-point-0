@@ -20,12 +20,16 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/settings' do
+    if is_logged_in?
+      erb :'/users/edit_user'
+    end
+  end
+
   get '/home' do
     @user = User.find_by_id(session[:user_id])
     erb :'/users/home'
   end
-
-
 
   get '/signup' do
     if !is_logged_in?
@@ -36,14 +40,19 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if params.none? {|key, value| value == ""} && User.find_by(email: params[:email]).nil?
-      user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
-      session[:user_id] = user.id
-      flash[:success] = "Account created successfully. Welcome to BuJo 2.0!"
-      redirect '/home'
-    elsif params.none? {|key, value| value == ""} && User.find_by(email: params[:email])
-      flash[:error] = "There is already a user associated with that email address."
-      redirect '/signup'
+    if params.none? {|key, value| value == ""}
+      if User.find_by(email: params[:email]).nil? && params[:password] == params[:password_check]
+        user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], past_migration: true)
+        session[:user_id] = user.id
+        flash[:success] = "Account created successfully. Welcome to BuJo 2.0!"
+        redirect '/home'
+      elsif User.find_by(email: params[:email]) && params[:password] == params[:password_check]
+        flash[:error] = "There is already a user associated with that email address."
+        redirect '/signup'
+      elsif params[:password] != params[:password_check]
+        flash[:error] = "Your password entries don't match."
+        redirect '/signup'
+      end
     else
       flash[:error] = "Please make sure you have completed all fields before creating your account."
       redirect '/signup'
