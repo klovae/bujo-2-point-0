@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124231601) do
+ActiveRecord::Schema.define(version: 20170125190509) do
 
   create_table "days", force: :cascade do |t|
     t.datetime "date"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20170124231601) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.boolean  "past_migration"
   end
 
 end
