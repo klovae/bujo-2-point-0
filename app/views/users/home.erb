@@ -1,4 +1,4 @@
-<h1>Welcome <%= @user.first_name %>!</h1>
+<h1>Welcome <%= current_user.first_name %>!</h1>
 
 <% if flash[:success] %>
   <div class="success-message">
@@ -6,7 +6,7 @@
   </div>
 <% end %>
 
-<% if @user.days.all.count == 0 %>
+<% if current_user.days.all.count == 0 %>
 <p>
   First time? <a href="#">Get a quick tutorial</a>!
 </p>

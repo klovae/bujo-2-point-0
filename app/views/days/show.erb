@@ -11,8 +11,10 @@
 <% end %>
 
 
-<% if @day.tasks.all.count > 0 %>
+<% if @day.tasks.all.count >= 2 %>
   <h2>Tasks</h2>
+<% elsif @day.tasks.all.count == 1 %>
+  <h2>Task</h2>
 <% end %>
 
 <% @day.tasks.each do |task| %>
@@ -41,8 +43,10 @@
   </div>
 <% end %>
 
-<% if @day.events.count > 0 %>
+<% if @day.events.count >= 2 %>
   <h2>Events</h2>
+<% elsif @day.events.count == 1 %>
+  <h2>Event</h2>
 <% end %>
 
 <% @day.events.each do |event| %>

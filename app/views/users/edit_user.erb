@@ -1,14 +1,75 @@
 <h1>Update Your Settings</h1>
 
-<form action="/users/<%= current_user.id %>" method="post">
+<% if flash[:error] %>
+  <div class="error-message">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+
+<form action="/settings" method="post">
   <input type="hidden" name="_method" value="patch">
-  <label>First Name: </label><input type="text" name="first_name" value="<%= current_user.first_name %>">
-  <label>Last Name: </label><input type="text" name="last_name" value="<%= current_user.last_name %>">
-  <label>Email: </label><input type="text" name="email" value="<%= current_user.email %>">
+
+  <table>
+    <tr>
+      <td class="col-1">
+        <label>First Name: </label>
+      </td>
+      <td class="textbox">
+        <input type="text" name="first_name" value="<%= @user.first_name %>">
+      </td>
+    </tr>
+
+    <tr>
+      <td class="col-1">
+        <label>Last Name: </label>
+      </td>
+      <td class="textbox">
+        <input type="text" name="last_name" value="<%= @user.last_name %>">
+      </dr>
+    </tr>
+
+    <tr>
+      <td class="col-1">
+        <label>Email: </label>
+      </td>
+      <td class="textbox">
+        <input type="text" name="email" value="<%= @user.email %>">
+      </dr>
+    </tr>
+  </table>
+
   <p>
-    If you would like to change your password, please enter it into the field below:
+    If you would like to change your password, please enter and confirm your new password in the fields below:
   </p>
-  <input type="password" name="password" value="<%= current_user.password_digest %>">
-  <label>Open tasks from past days can only be migrated: </label><input type="checkbox" name="past_migration" <%= 'checked' if current_user.past_migration = true %>>
-  <input type="submit" value="Update Settings">
+
+  <table>
+    <tr>
+      <td class="col-1">
+        <label>Password: </label>
+      </td>
+      <td class="textbox">
+        <input type="password" name="password" value="">
+      </td>
+    </tr>
+
+    <tr>
+      <td class="col-1">
+        <label>Confirm Password: </label>
+      </td>
+      <td class="textbox">
+        <input type="password" name="password_check" value="">
+      </td>
+    </tr>
+  </table>
+
+  <label>Open tasks from past days must be migrated before they can be completed: </label><input type="checkbox" name="past_migration" <%= 'checked' if @user.past_migration = true %>>
+
+  <p>
+    If this box is checked, any past tasks that you want to complete need to be moved to the current day to complete them. This helps you keep better data on your migration and completed tasks, but if that's not a priority, feel free to uncheck it and you can complete past tasks from either the Tasks page or on the page for that day.
+  </p>
+
+  <div class="form-button">
+    <input type="submit" value="Update Settings">
+  </div>
 </form>

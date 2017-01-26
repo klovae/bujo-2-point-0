@@ -22,13 +22,50 @@ class UsersController < ApplicationController
 
   get '/settings' do
     if is_logged_in?
+      @user = current_user
       erb :'/users/edit_user'
+    else
+      flash[:error] = "You must be signed in to change your settings"
+      redirect '/login'
     end
   end
 
+  patch '/settings' do
+    if params[:email] != "" && params[:first_name] != "" && params[:last_name] != ""
+
+      if User.find_by(email: params[:email]) == current_user || User.find_by(email: params[:email]).nil?
+        current_user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
+
+        if params[:password] != "" && params[:password] == params[:password_check]
+          current_user.update(password: params[:password])
+        elsif params[:password] != "" && params[:password] != params[:password_check]
+          flash[:error] = "Your new password entries don't match."
+          redirect '/settings'
+        end
+
+        flash[:success] = "Account updated successfully."
+        redirect '/home'
+
+      else
+        flash[:error] = "That email address is already in use."
+        redirect '/settings'
+      end
+
+    else
+      flash[:error] = "Please make sure you have completed all fields before updating your account."
+      redirect '/settings'
+    end
+  end
+
+
+
   get '/home' do
-    @user = User.find_by_id(session[:user_id])
-    erb :'/users/home'
+    if is_logged_in?
+      erb :'/users/home'
+    else
+      flash[:error] = "You must be signed in to view your bullet journal"
+      redirect '/login'
+    end
   end
 
   get '/signup' do
