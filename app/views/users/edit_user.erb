@@ -39,6 +39,21 @@
     </tr>
   </table>
 
+  <label>Open tasks from past days must be migrated before they can be completed: </label><input type="checkbox" name="past_migration" <%= 'checked' if @user.past_migration = true %>>
+
+  <p>
+    If this box is checked, any past tasks that you want to complete need to be moved to the current day to complete them. This helps you keep better data on your migration and completed tasks, but if that's not a priority, feel free to uncheck it and you can complete past tasks from either the Tasks page or on the page for that day.
+  </p>
+
+  <div class="form-button">
+    <input type="submit" value="Update Settings">
+  </div>
+</form>
+
+<form action="/settings" method="post">
+  <input type="hidden" name="_method" value="patch">
+<h2>Change Password</h2>
+
   <p>
     If you would like to change your password, please enter and confirm your new password in the fields below:
   </p>
@@ -63,13 +78,6 @@
     </tr>
   </table>
 
-  <label>Open tasks from past days must be migrated before they can be completed: </label><input type="checkbox" name="past_migration" <%= 'checked' if @user.past_migration = true %>>
-
-  <p>
-    If this box is checked, any past tasks that you want to complete need to be moved to the current day to complete them. This helps you keep better data on your migration and completed tasks, but if that's not a priority, feel free to uncheck it and you can complete past tasks from either the Tasks page or on the page for that day.
-  </p>
-
-  <div class="form-button">
-    <input type="submit" value="Update Settings">
-  </div>
+  <input type="submit" value="Change Password">
+</div>
 </form>

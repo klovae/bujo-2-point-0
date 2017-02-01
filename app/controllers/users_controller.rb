@@ -31,26 +31,26 @@ class UsersController < ApplicationController
   end
 
   patch '/settings' do
-    if params[:email] != "" && params[:first_name] != "" && params[:last_name] != ""
+    binding.pry
+    if params[:password]
+      if params[:password] != "" && params[:password] == params[:password_check]
+        current_user.update(password: params[:password])
+        flash[:success] = "Password updated successfully."
+        redirect '/home'
+      elsif params[:password] != "" && params[:password] != params[:password_check]
+        flash[:error] = "Your new password entries don't match."
+        redirect '/settings'
+      end
 
+    elsif params[:email] != "" && params[:first_name] != "" && params[:last_name] != ""
       if User.find_by(email: params[:email]) == current_user || User.find_by(email: params[:email]).nil?
         current_user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
-
-        if params[:password] != "" && params[:password] == params[:password_check]
-          current_user.update(password: params[:password])
-        elsif params[:password] != "" && params[:password] != params[:password_check]
-          flash[:error] = "Your new password entries don't match."
-          redirect '/settings'
-        end
-
-        flash[:success] = "Account updated successfully."
+        flash[:success] = "Account settings updated successfully."
         redirect '/home'
-
       else
         flash[:error] = "That email address is already in use."
         redirect '/settings'
       end
-
     else
       flash[:error] = "Please make sure you have completed all fields before updating your account."
       redirect '/settings'
