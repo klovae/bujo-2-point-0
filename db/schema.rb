@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125190509) do
+ActiveRecord::Schema.define(version: 20170202031805) do
 
   create_table "days", force: :cascade do |t|
     t.datetime "date"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20170125190509) do
     t.string  "status"
     t.integer "day_id"
     t.integer "user_id"
+  end
+
+  create_table "migrations", force: :cascade do |t|
+    t.integer  "old_day_id"
+    t.integer  "new_day_id"
+    t.integer  "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|

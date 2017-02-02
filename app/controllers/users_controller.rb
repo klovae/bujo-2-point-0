@@ -57,8 +57,6 @@ class UsersController < ApplicationController
     end
   end
 
-
-
   get '/home' do
     if is_logged_in?
       erb :'/users/home'
