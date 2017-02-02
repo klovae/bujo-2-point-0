@@ -45,6 +45,20 @@ class TasksController < ApplicationController
     end
   end
 
+  post "/tasks/:taskid/migrate" do
+    task = Task.find_by_id(params[:taskid])
+    old_day = task.day
+    if task.day.date = Date.today
+      new_day = Day.find_or_create_by(date: Date.tomorrow, user: current_user)
+    else
+      new_day = Day.find_or_create_by(date: Date.today, user: current_user)
+    end
+    migrate = Migration.create(task_id: task.id, old_day_id: old_day.id, new_day_id: new_day.id)
+    task.day = new_day
+    flash[:success] = "Task migrated"
+    redirect "/days/#{old_day.id}"
+  end
+
   delete "/tasks/:taskid/delete" do
     task = Task.find_by_id(params[:taskid])
     day_id = task.day.id

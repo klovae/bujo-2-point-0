@@ -36,6 +36,11 @@
     <div class="button">
       <a href="/tasks/<%= task.id %>">EDIT</a>
     </div>
+
+    <div class="button">
+      <a href="/tasks/<%= task.id %>/migrate">MIGRATE</a>
+    </div>
+
     <form class="form-button" action="/tasks/<%= task.id %>/delete" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete">
