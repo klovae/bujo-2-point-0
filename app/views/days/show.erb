@@ -11,9 +11,9 @@
 <% end %>
 
 
-<% if @day.tasks.all.count >= 2 %>
+<% if @day.tasks.count >= 2 %>
   <h2>Tasks</h2>
-<% elsif @day.tasks.all.count == 1 %>
+<% elsif @day.tasks.count == 1 %>
   <h2>Task</h2>
 <% end %>
 
@@ -37,16 +37,32 @@
       <a href="/tasks/<%= task.id %>">EDIT</a>
     </div>
 
-    <div class="button">
-      <a href="/tasks/<%= task.id %>/migrate">MIGRATE</a>
-    </div>
+    <% if task.status != "complete" %>
+      <form class="form-button" action="/tasks/<%= task.id %>/migrate" method="post">
+        <input type="submit" value="Migrate">
+      </form>
+    <% end %>
 
     <form class="form-button" action="/tasks/<%= task.id %>/delete" method="post">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete">
     </form>
   </div>
+
 <% end %>
+
+<% @day.migrations.each do |migration| %>
+  <div class="task">
+    <div class="indicator">
+      >
+    </div>
+    <%= migration.task.content %>
+  </div>
+<% end %>
+
+
+
+
 
 <% if @day.events.count >= 2 %>
   <h2>Events</h2>

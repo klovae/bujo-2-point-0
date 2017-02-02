@@ -16,7 +16,7 @@ class EventsController < ApplicationController
       redirect "/days/#{day.id}/events/new"
     end
   end
-  
+
   get "/events/:eventid" do
     @event = Event.find_by_id(params[:eventid])
     erb :"/events/edit_event"
@@ -30,7 +30,7 @@ class EventsController < ApplicationController
       redirect "/days/#{@event.day_id}"
     else
       flash[:error] = "Please add the description for your event to update it."
-      redirect "/events/:eventid"
+      redirect "/events/#{@event.id}"
     end
   end
 
