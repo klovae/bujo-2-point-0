@@ -20,10 +20,11 @@
 <% @day.tasks.each do |task| %>
   <div class="task">
 
+  <div class="indicator">
     <% if task.status == "complete" %>
-      <div class="indicator">
-        X
-      </div>
+      X
+    <% elsif current_user.past_migration == true && @day.date < Date.today %>
+      &#8226;
     <% else %>
       <form class="form-button" action="/tasks/<%= task.id %>/complete" method="post">
         <input type="hidden" name="_method" value="patch">
@@ -31,13 +32,14 @@
         <input type="submit" value="&#8226;">
       </form>
     <% end %>
+  </div>
 
     <%= task.content %>
     <div class="button">
       <a href="/tasks/<%= task.id %>">EDIT</a>
     </div>
 
-    <% if task.status != "complete" %>
+    <% if task.status != "complete" && @day.date != Date.tomorrow %>
       <form class="form-button" action="/tasks/<%= task.id %>/migrate" method="post">
         <input type="submit" value="Migrate">
       </form>
@@ -86,7 +88,7 @@
 </div>
 <% end %>
 
-
+<% if @day.date >= Date.today %>
 <a href="/days/<%= @day.id %>/tasks/new">
   <div class="button">
     Add a task
@@ -98,3 +100,4 @@
     Add an event
   </div>
 </a>
+<% end %>

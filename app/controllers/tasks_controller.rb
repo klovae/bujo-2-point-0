@@ -55,6 +55,7 @@ class TasksController < ApplicationController
     end
     migrate = Migration.create(task_id: task.id, day_id: day_id, new_day_id: new_day.id)
     task.day = new_day
+    task.save
     flash[:success] = "Task migrated"
     redirect "/days/#{day_id}"
   end
