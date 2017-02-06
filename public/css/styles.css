@@ -1,10 +1,16 @@
 /* //////////////// GENERAL ////////////////// */
 
+html {
+  height: 100%;
+}
+
 body {
   background-image: url(/images/dot_grid.png);
   background-size: cover;
   font-family: 'Source Sans Pro', sans-serif;
   margin: 0;
+  height: 100%;
+  line-height: 1.4em;
 }
 
 p {
@@ -18,9 +24,97 @@ h1, h2, h3 {
   letter-spacing: .01em;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.2s linear;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #08A838;
+}
+
+/* //////// WRAPPERS ////// */
+
 #all-wrap {
-  width: 70%;
+  width: 60%;
   background-color: rgba(255, 255, 255, .5);
-  padding: 5%;
+  padding: 3% 5%;
   margin:0 auto;
+  height: 100%;
+}
+
+#menu-wrap {
+  display: inline-block;
+  width: 15%;
+  border-right: 7px double #000;
+  padding-right: 5%;
+}
+
+#logo {
+  width: 160px;
+}
+
+#content-wrap {
+  display: inline-block;
+  padding: 0 5%;
+  position: fixed;
+}
+
+/* /////// FLASH DIVS ////// */
+div.error-message {
+  color: #E3280B;
+}
+
+div.success-message {
+  color: #08A838;
+}
+
+/* /// MENUS ////// */
+
+#menu {
+  list-style-type: none;
+  padding-top: 1em;
+}
+
+#menu a {
+  display: block;
+  font-size: 1.3em;
+  line-height: 1.6em;
+}
+
+
+/* /////// TASKS + EVENTS /////// */
+
+.task-component {
+  display: inline-block;
+}
+
+div.task {
+  padding: 4px 0;
+}
+
+div.indicator {
+  padding: 0 6px;
+}
+
+
+/* /////// FORM STYLES //////// */
+
+form input[type="text"] {
+  padding: 12px, 20px;
+  box-sizing: border-box;
+}
+
+input
+
+/* ///// FIXES ////// */
+
+.clearfix:after {
+   content: "."; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
 }

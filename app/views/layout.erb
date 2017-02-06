@@ -8,7 +8,25 @@
   </head>
   <body>
     <div id="all-wrap">
-      <%= yield %>
+      <div id="menu-wrap">
+        <a href="/home"><img id="logo" src="/images/bujo_logo_color.png" alt="" /></a>
+        <div id="menu">
+          <% if is_logged_in? %>
+          <a href="/days/today">Today</a>
+          <a href="/days/tomorrow">Tomorrow</a>
+          <a href="/tasks">All Tasks</a>
+          <a href="/days">Day Index</a>
+          <a href="/settings">Settings</a>
+          <a href="/logout">Log Out</a>
+          <% else %>
+          <a href="/login">Log In</a>
+          <a href="/signup">Create Account</a>
+          <% end %>
+        </div>
+      </div>
+      <div id="content-wrap">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
