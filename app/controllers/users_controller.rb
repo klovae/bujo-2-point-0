@@ -45,11 +45,6 @@ class UsersController < ApplicationController
     elsif params[:email] != "" && params[:first_name] != "" && params[:last_name] != ""
       if User.find_by(email: params[:email]) == current_user || User.find_by(email: params[:email]).nil?
         current_user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
-        if params[:past_migration] == "on"
-          current_user.update(past_migration: true)
-        else
-          current_user.update(past_migration: false)
-        end
         flash[:success] = "Account settings updated successfully."
         redirect '/home'
       else

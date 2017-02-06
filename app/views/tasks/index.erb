@@ -1,28 +1,30 @@
-<h1>Open Past Tasks</h1>
+<h1>Current Open Tasks</h1>
 
 <% @tasks.each do |task| %>
 <div class="task">
 
-<div class="indicator">
+<div class="indicator task-component">
   <form class="form-button" action="/tasks/<%= task.id %>/complete" method="post">
     <input type="hidden" name="_method" value="patch">
     <input type="hidden" name="status" value="complete">
     <input type="submit" value="&#8226;">
   </form>
 </div>
-
+<div class="task-component">
   <%= task.content %>
-  <div class="button">
+</div>
+
+  <div class="button task-component">
     <a href="/tasks/<%= task.id %>">EDIT</a>
   </div>
 
   <% if task.status != "complete" && task.day.date != Date.tomorrow %>
-    <form class="form-button" action="/tasks/<%= task.id %>/migrate" method="post">
+    <form class="form-button task-component" action="/tasks/<%= task.id %>/migrate" method="post">
       <input type="submit" value="Migrate">
     </form>
   <% end %>
 
-  <form class="form-button" action="/tasks/<%= task.id %>/delete" method="post">
+  <form class="form-button task-component" action="/tasks/<%= task.id %>/delete" method="post">
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete">
   </form>
