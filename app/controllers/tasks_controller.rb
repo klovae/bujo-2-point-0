@@ -47,8 +47,8 @@ class TasksController < ApplicationController
 
   post "/tasks/:taskid/migrate" do
     task = Task.find_by_id(params[:taskid])
-    day_id =task.day.id
-    if task.day.date = Date.today
+    day_id = task.day.id
+    if task.day.date == Date.today
       new_day = Day.find_or_create_by(date: Date.tomorrow, user: current_user)
     else
       new_day = Day.find_or_create_by(date: Date.today, user: current_user)

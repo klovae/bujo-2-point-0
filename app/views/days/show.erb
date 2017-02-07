@@ -39,20 +39,26 @@
     <%= task.content %>
   </div>
 
-    <div class="button task-component">
-      <a href="/tasks/<%= task.id %>">EDIT</a>
-    </div>
+  <% if task.status != "complete" && @day.date != Date.tomorrow %>
+    <form class="form-button task-component" action="/tasks/<%= task.id %>/migrate" method="post">
+      <div class="migrate">
+        <input type="submit" value="">
+      </div>
 
-    <% if task.status != "complete" && @day.date != Date.tomorrow %>
-      <form class="form-button task-component" action="/tasks/<%= task.id %>/migrate" method="post">
-        <input type="submit" value="Migrate">
-      </form>
-    <% end %>
+    </form>
+  <% end %>
+
+    <div class="button task-component">
+      <a href="/tasks/<%= task.id %>"><img class="edit" src="/images/edit.png" alt="" /></a>
+    </div>
 
     <form class="form-button task-component" action="/tasks/<%= task.id %>/delete" method="post">
       <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="Delete">
+      <div class="delete">
+        <input type="submit" value="">
+      </div>
     </form>
+
   </div>
 
 <% end %>

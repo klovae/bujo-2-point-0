@@ -32,14 +32,14 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: #08A838;
+  color: #08A854;
 }
 
 /* //////// WRAPPERS ////// */
 
 #all-wrap {
   width: 60%;
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, .7);
   padding: 3% 5%;
   margin:0 auto;
   height: 100%;
@@ -68,7 +68,7 @@ div.error-message {
 }
 
 div.success-message {
-  color: #08A838;
+  color: #08A854;
 }
 
 /* /// MENUS ////// */
@@ -96,7 +96,7 @@ div.task {
 }
 
 div.indicator {
-  padding: 0 6px;
+  padding: 0 8px;
 }
 
 
@@ -107,7 +107,45 @@ form input[type="text"] {
   box-sizing: border-box;
 }
 
-input
+input[type=button], input[type=submit] {
+    background-color: transparent;
+    border: 2px solid transparent;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: border 0.2s linear;
+}
+
+input[type=button]:hover, input[type=submit]:hover {
+    border-bottom: 2px solid #08A854;
+    box-sizing: border-box;
+}
+
+img.edit {
+    cursor:pointer;
+    width: 25px;
+    height: 25px;
+    border: none;
+    display: inline-block;
+}
+
+div.migrate {
+    background-image: url(/images/scroll-arrow-to-right.png);
+    background-size: contain;
+    cursor:pointer;
+    width: 25px;
+    height: 25px;
+    border: none;
+}
+
+div.delete {
+    background-image: url(/images/rubbish-bin.png);
+    background-size: contain;
+    cursor:pointer;
+    width: 25px;
+    height: 25px;
+    border: none;
+}
 
 /* ///// FIXES ////// */
 
