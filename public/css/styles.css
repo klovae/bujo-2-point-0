@@ -13,11 +13,6 @@ body {
   line-height: 1.4em;
 }
 
-p {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1em;
-}
-
 h1, h2, h3 {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
@@ -40,16 +35,22 @@ a:hover {
 #all-wrap {
   width: 60%;
   background-color: rgba(255, 255, 255, .7);
-  padding: 3% 5%;
-  margin:0 auto;
+  padding: 0 5%;
+  margin: auto;
   height: 100%;
+}
+
+#bookmark {
+  display: inline-block;
+  position: fixed;
 }
 
 #menu-wrap {
   display: inline-block;
   width: 15%;
-  border-right: 7px double #000;
   padding-right: 5%;
+  padding-top: 3%;
+  height: 90%;
 }
 
 #logo {
@@ -60,6 +61,8 @@ a:hover {
   display: inline-block;
   padding: 0 5%;
   position: fixed;
+  overflow:visible;
+  padding-top: 3%
 }
 
 /* /////// FLASH DIVS ////// */
@@ -93,6 +96,7 @@ div.success-message {
 
 div.task {
   padding: 4px 0;
+  font-size: 1.2em;
 }
 
 div.indicator {
@@ -116,35 +120,40 @@ input[type=button], input[type=submit] {
     transition: border 0.2s linear;
 }
 
-input[type=button]:hover, input[type=submit]:hover {
-    border-bottom: 2px solid #08A854;
-    box-sizing: border-box;
-}
 
-img.edit {
+.icon {
     cursor:pointer;
     width: 25px;
     height: 25px;
     border: none;
     display: inline-block;
+    margin: 0 4px;
 }
+
+
 
 div.migrate {
     background-image: url(/images/scroll-arrow-to-right.png);
     background-size: contain;
-    cursor:pointer;
-    width: 25px;
-    height: 25px;
-    border: none;
+}
+
+div.complete {
+    background-image: url(/images/circle-outline-of-small-size.png);
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    transition: background-image 0.2s linear;
+
+}
+
+div.complete:hover {
+    background-image: url(/images/circle-outline-of-small-size-grn.png);
+    background-size: contain;
 }
 
 div.delete {
     background-image: url(/images/rubbish-bin.png);
     background-size: contain;
-    cursor:pointer;
-    width: 25px;
-    height: 25px;
-    border: none;
 }
 
 /* ///// FIXES ////// */
