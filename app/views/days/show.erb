@@ -13,7 +13,7 @@
 
   <h2>Task<% if @day.tasks.count >= 2 %>s<% end %>&nbsp;
     <% if @day.date >= Date.today %>
-      <a href="/days/<%= @day.id %>/tasks/new">+</a>
+      <a href="/days/<%= @day.id %>/tasks/new"><div class="add icon"></div></a>
     <% end %>
   </h2>
 
@@ -22,14 +22,12 @@
 
   <div class="task-component">
     <% if task.status == "complete" %>
-    <div class="indicator">
-      X
-    </div>
+    <div class="completed icon"></div>
     <% else %>
       <form action="/tasks/<%= task.id %>/complete" method="post">
         <input type="hidden" name="_method" value="patch">
         <input type="hidden" name="status" value="complete">
-      <div class="complete">
+      <div class="complete icon">
         <input type="submit" value="">
       </div>
       </form>
@@ -51,7 +49,7 @@
   <% end %>
 
     <div class="task-component">
-      <a href="/tasks/<%= task.id %>"><img class="edit icon" src="/images/edit.png" alt="" /></a>
+      <a href="/tasks/<%= task.id %>"><div class="edit icon"></div></a>
     </div>
 
     <form class="task-component" action="/tasks/<%= task.id %>/delete" method="post">
@@ -67,9 +65,7 @@
 
 <% @day.migrations.each do |migration| %>
   <div class="task">
-    <div class="indicator task-component">
-      >
-    </div>
+    <div class="migrated icon task-component"></div>
     <div class="task-component">
       <%= migration.task.content %>
     </div>
@@ -80,7 +76,7 @@
 
 
   <h2>Event<% if @day.events.count >= 2 %>s<% end %>&nbsp;
-    <a href="/days/<%= @day.id %>/events/new">+</a>
+    <a href="/days/<%= @day.id %>/events/new"><div class="add icon"></div></a>
   </h2>
 
 <% @day.events.each do |event| %>

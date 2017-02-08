@@ -123,36 +123,74 @@ input[type=button], input[type=submit] {
 
 .icon {
     cursor:pointer;
-    width: 25px;
-    height: 25px;
+    width: 24px;
+    height: 24px;
     border: none;
     display: inline-block;
-    margin: 0 4px;
+    margin: 0 4px -4px 4px;
+    transition: background-image 0.2s linear;
 }
 
+div.edit {
+  background-image: url(/images/editblk.png);
+  transition: 0.2s linear;
+}
+
+div.edit:hover {
+  background-image: url(/images/edit-grn.png);
+}
 
 
 div.migrate {
-    background-image: url(/images/scroll-arrow-to-right.png);
+    background-image: url(/images/scroll-arrow-to-rightblk.png);
     background-size: contain;
+}
+
+div.migrate:hover {
+    background-image: url(/images/scroll-arrow-to-rightgrn.png);
+    background-size: contain;
+}
+
+div.migrated {
+    background-image: url(/images/scroll-arrow-to-rightblk.png);
+    background-size: contain;
+    cursor: auto;
 }
 
 div.complete {
-    background-image: url(/images/circle-outline-of-small-size.png);
+    background-image: url(/images/bullet-icon-01.png);
     background-size: contain;
-    width: 24px;
-    height: 24px;
-    transition: background-image 0.2s linear;
-
 }
 
 div.complete:hover {
-    background-image: url(/images/circle-outline-of-small-size-grn.png);
+    background-image: url(/images/letter-x.png);
     background-size: contain;
 }
 
+div.completed {
+    background-image: url(/images/letter-x.png);
+    background-size: contain;
+    cursor: auto;
+}
+
 div.delete {
-    background-image: url(/images/rubbish-bin.png);
+    background-image: url(/images/rubbish-binblk.png);
+    background-size: contain;
+}
+
+div.delete:hover {
+    background-image: url(/images/rubbish-bingrn.png);
+    background-size: contain;
+}
+
+
+div.add {
+    background-image: url(/images/add-songblk.png);
+    background-size: contain;
+}
+
+div.add:hover {
+    background-image: url(/images/add-song.png);
     background-size: contain;
 }
 
