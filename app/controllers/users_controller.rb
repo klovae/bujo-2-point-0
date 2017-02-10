@@ -12,8 +12,8 @@ class UsersController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:success] = "Login successful!"
-      redirect '/home'
+      flash[:success] = "Login successful. Welcome, #{current_user.first_name}!"
+      redirect '/days/today'
     else
       flash[:error] = "Sorry, your username and/or password is incorrect. Please try again."
       redirect '/login'

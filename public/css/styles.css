@@ -19,6 +19,10 @@ h1, h2, h3 {
   letter-spacing: .01em;
 }
 
+p {
+  font-size: 1.2em;
+}
+
 a {
   text-decoration: none;
   color: #000;
@@ -87,6 +91,21 @@ div.success-message {
   line-height: 1.6em;
 }
 
+div.line {
+  width:50%;
+  border-bottom: 2px solid #000;
+  margin: 20px 0;
+}
+
+div.day-nav {
+  font-size: 1.3em;
+  line-height: 1.6em;
+}
+
+h1.day-title {
+  margin-bottom: .3em;
+}
+
 
 /* /////// TASKS + EVENTS /////// */
 
@@ -94,7 +113,7 @@ div.success-message {
   display: inline-block;
 }
 
-div.task {
+div.task, div.event-item {
   padding: 4px 0;
   font-size: 1.2em;
 }
@@ -103,6 +122,9 @@ div.indicator {
   padding: 0 8px;
 }
 
+div.content {
+  margin-right: 6px;
+}
 
 /* /////// FORM STYLES //////// */
 
@@ -120,6 +142,8 @@ input[type=button], input[type=submit] {
     transition: border 0.2s linear;
 }
 
+/*////// ICON STYLES ///////*/
+
 
 .icon {
     cursor:pointer;
@@ -127,17 +151,25 @@ input[type=button], input[type=submit] {
     height: 24px;
     border: none;
     display: inline-block;
-    margin: 0 4px -4px 4px;
+    margin-right: 6px;
     transition: background-image 0.2s linear;
+}
+
+div.event {
+  background-image: url(/images/circle-outline.png);
+  background-size: contain;
 }
 
 div.edit {
   background-image: url(/images/editblk.png);
-  transition: 0.2s linear;
+  background-size: contain;
+  position: relative;
+  top: 2px;
 }
 
 div.edit:hover {
   background-image: url(/images/edit-grn.png);
+  background-size: contain;
 }
 
 
@@ -150,6 +182,7 @@ div.migrate:hover {
     background-image: url(/images/scroll-arrow-to-rightgrn.png);
     background-size: contain;
 }
+
 
 div.migrated {
     background-image: url(/images/scroll-arrow-to-rightblk.png);

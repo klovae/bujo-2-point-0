@@ -3,31 +3,37 @@
 <% @tasks.each do |task| %>
 <div class="task">
 
-<div class="indicator task-component">
-  <form class="form-button" action="/tasks/<%= task.id %>/complete" method="post">
+<div class="task-component">
+  <form action="/tasks/<%= task.id %>/complete" method="post">
     <input type="hidden" name="_method" value="patch">
     <input type="hidden" name="status" value="complete">
-    <input type="submit" value="&#8226;">
+  <div class="complete icon">
+    <input type="submit" value="">
+  </div>
   </form>
 </div>
+
 <div class="task-component">
   <%= task.content %>
 </div>
 
-  <div class="button task-component">
-    <a href="/tasks/<%= task.id %>">EDIT</a>
+<% if task.status != "complete" && task.day.date != Date.tomorrow %>
+  <form class="task-component" action="/tasks/<%= task.id %>/migrate" method="post">
+  <div class="migrate icon">
+    <input type="submit" value="">
   </div>
-
-  <% if task.status != "complete" && task.day.date != Date.tomorrow %>
-    <form class="form-button task-component" action="/tasks/<%= task.id %>/migrate" method="post">
-      <input type="submit" value="Migrate">
-    </form>
-  <% end %>
-
-  <form class="form-button task-component" action="/tasks/<%= task.id %>/delete" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete">
   </form>
+<% end %>
+
+<div class="task-component">
+  <a href="/tasks/<%= task.id %>"><div class="edit icon"></div></a>
+  </div>
+    <form class="task-component" action="/tasks/<%= task.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <div class="delete icon">
+      <input type="submit" value="">
+    </div>
+    </form>
 </div>
 
 <% end %>
