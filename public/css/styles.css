@@ -146,7 +146,7 @@ input[type=button], input[type=submit] {
 
 
 .icon {
-    cursor:pointer;
+    cursor: pointer;
     width: 24px;
     height: 24px;
     border: none;
@@ -158,6 +158,7 @@ input[type=button], input[type=submit] {
 div.event {
   background-image: url(/images/circle-outline.png);
   background-size: contain;
+  cursor: auto;
 }
 
 div.edit {

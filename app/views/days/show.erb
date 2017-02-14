@@ -1,6 +1,12 @@
 <h1 class="day-title"><%= @day.date.strftime("%a, %B %-d, %Y") %></h1>
 <div class="day-nav">
-  <a href="/days/back">Previous Day</a> || <a href="/days/next">Next Day</a>
+  <% if @day != current_user.days.first && @day != current_user.days.last %>
+    <a href="/days/<%= @day.id %>/previous">Previous Day</a> || <a href="/days/<%= @day.id %>/next">Next Day</a>
+  <% elsif @day == current_user.days.first %>
+    <a href="/days/<%= @day.id %>/next">Next Day</a>
+  <% elsif @day == current_user.days.last%>
+    <a href="/days/<%= @day.id %>/previous">Previous Day</a> 
+  <% end %>
 </div>
 
 
@@ -98,7 +104,9 @@
 <div class="event-item">
   <div class="icon event task-component">
   </div>
-  <%= event.content %>
+  <div class="task-component content">
+      <%= event.content %>
+  </div>
   <div class="task-component">
     <a href="/events/<%= event.id %>"><div class="edit icon"></div></a>
   </div>
