@@ -5,7 +5,7 @@
   <% elsif @day == current_user.days.first %>
     <a href="/days/<%= @day.id %>/next">Next Day</a>
   <% elsif @day == current_user.days.last%>
-    <a href="/days/<%= @day.id %>/previous">Previous Day</a> 
+    <a href="/days/<%= @day.id %>/previous">Previous Day</a>
   <% end %>
 </div>
 
@@ -20,9 +20,9 @@
   </div>
 <% end %>
 
-<% if current_user.days.all.count == 0 %>
+<% if current_user.days.all.count <= 2 %>
 <p>
-  First time? <a href="/help">Get a quick tutorial</a>!
+  New to BuJo 2.0? <a href="/help">Get the basics</a>!
 </p>
 <% end %>
 
@@ -56,7 +56,6 @@
   </div>
 
   <div class="task-component content">
-
     <%= task.content %>
   </div>
 

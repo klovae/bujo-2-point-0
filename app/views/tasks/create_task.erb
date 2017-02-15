@@ -10,7 +10,9 @@
   </div>
 <% end %>
 
-<form action="/days/<%= @day.id %>/tasks" method="post">
+<form class="add" action="/days/<%= @day.id %>/tasks" method="post">
   <input type="text" name="content" value="">
-  <input type="submit" value="Add Task">
+  <div class="add icon">
+    <input type="submit" value="">
+  </div>
 </form>

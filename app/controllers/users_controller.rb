@@ -4,7 +4,8 @@ class UsersController < ApplicationController
     if !is_logged_in?
       erb :'/users/login'
     else
-      redirect '/home'
+      flash[:success] = "Welcome back, #{current_user.first_name}!"
+      redirect '/days/today'
     end
   end
 
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      flash[:success] = "Login successful. Welcome, #{current_user.first_name}!"
+      flash[:success] = "Login successful. Welcome back, #{current_user.first_name}!"
       redirect '/days/today'
     else
       flash[:error] = "Sorry, your username and/or password is incorrect. Please try again."
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
       if params[:password] != "" && params[:password] == params[:password_check]
         current_user.update(password: params[:password])
         flash[:success] = "Password updated successfully."
-        redirect '/home'
+        redirect '/days/today'
       elsif params[:password] != "" && params[:password] != params[:password_check]
         flash[:error] = "Your new password entries don't match."
         redirect '/settings'
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
       if User.find_by(email: params[:email]) == current_user || User.find_by(email: params[:email]).nil?
         current_user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
         flash[:success] = "Account settings updated successfully."
-        redirect '/home'
+        redirect '/days/today'
       else
         flash[:error] = "That email address is already in use."
         redirect '/settings'
@@ -57,20 +58,13 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/home' do
-    if is_logged_in?
-      erb :'/users/home'
-    else
-      flash[:error] = "You must be signed in to view your bullet journal"
-      redirect '/login'
-    end
-  end
 
   get '/signup' do
     if !is_logged_in?
       erb :'/users/create_user'
     else
-      redirect '/home'
+      flash[:success] = "You're already logged in as #{current_user.first_name}"
+      redirect '/days/today'
     end
   end
 
@@ -80,7 +74,7 @@ class UsersController < ApplicationController
         user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], past_migration: true)
         session[:user_id] = user.id
         flash[:success] = "Account created successfully. Welcome to BuJo 2.0!"
-        redirect '/home'
+        redirect '/days/today'
       elsif User.find_by(email: params[:email]) && params[:password] == params[:password_check]
         flash[:error] = "There is already a user associated with that email address."
         redirect '/signup'

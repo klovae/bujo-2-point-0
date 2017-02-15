@@ -11,7 +11,7 @@
 <% end %>
 
 <div class="form">
-  <form action="/events/<%= @event.id %>" method="post">
+  <form class="add submit" action="/events/<%= @event.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
     <input type="text" name="content" value="<%= @event.content %>">
     <input type="submit" value="Update Event">
