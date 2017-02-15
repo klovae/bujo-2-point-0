@@ -7,7 +7,12 @@ class TasksController < ApplicationController
 
   get "/tasks/:taskid" do
     @task = Task.find_by_id(params[:taskid])
-    erb :"/tasks/edit_task"
+    if is_logged_in? && @task.user == current_user
+      erb :"/tasks/edit_task"
+    else
+      flash[:error] = "You must be logged in as a different user to access that task"
+      redirect '/'
+    end
   end
 
   patch "/tasks/:taskid" do
@@ -63,8 +68,13 @@ class TasksController < ApplicationController
   delete "/tasks/:taskid/delete" do
     task = Task.find_by_id(params[:taskid])
     day_id = task.day.id
-    task.delete
-    redirect "/days/#{day_id}"
+    if task.user == current_user && is_logged_in?
+      task.delete
+      redirect "/days/#{day_id}"
+    else
+      flash[:error] = "You must be logged in as a different user to access that task"
+      redirect '/'
+    end
   end
 
 end

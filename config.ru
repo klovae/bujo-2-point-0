@@ -11,3 +11,4 @@ use DaysController
 use TasksController
 use UsersController
 use EventsController
+use SessionsController

@@ -19,7 +19,12 @@ class EventsController < ApplicationController
 
   get "/events/:eventid" do
     @event = Event.find_by_id(params[:eventid])
-    erb :"/events/edit_event"
+    if is_logged_in? && @event.user == current_user
+      erb :"/events/edit_event"
+    else
+      flash[:error] = "You must be logged in as a different user to access that event"
+      redirect '/'
+    end
   end
 
   patch "/events/:eventid" do
@@ -37,8 +42,13 @@ class EventsController < ApplicationController
   delete "/events/:eventid/delete" do
     event = Event.find_by_id(params[:eventid])
     day_id = event.day.id
-    event.delete
-    redirect "/days/#{day_id}"
+    if is_logged_in? && event.user == current_user
+      event.delete
+      redirect "/days/#{day_id}"
+    else
+      flash[:error] = "You must be logged in as a different user to access that event"
+      redirect '/'
+    end
   end
 
 end

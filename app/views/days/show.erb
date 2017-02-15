@@ -2,9 +2,9 @@
 <div class="day-nav">
   <% if @day != current_user.days.first && @day != current_user.days.last %>
     <a href="/days/<%= @day.id %>/previous">Previous Day</a> || <a href="/days/<%= @day.id %>/next">Next Day</a>
-  <% elsif @day == current_user.days.first %>
+  <% elsif @day == current_user.days.first && current_user.days.count > 1%>
     <a href="/days/<%= @day.id %>/next">Next Day</a>
-  <% elsif @day == current_user.days.last%>
+  <% elsif @day == current_user.days.last && current_user.days.count > 1%>
     <a href="/days/<%= @day.id %>/previous">Previous Day</a>
   <% end %>
 </div>

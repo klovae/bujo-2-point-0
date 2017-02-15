@@ -15,7 +15,12 @@ class DaysController < ApplicationController
 
   get "/days/:id" do
     @day = Day.find_by_id(params[:id])
-    erb :"/days/show"
+    if is_logged_in? && @day.user == current_user
+      erb :"/days/show"
+    else
+      flash[:error] = "You must be logged in as a different user to view that task list"
+      redirect '/'
+    end
   end
 
   get "/days/:id/previous" do
