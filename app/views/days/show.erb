@@ -83,13 +83,15 @@
 
 <% end %>
 
-<% @day.migrations.each do |migration| %>
-  <div class="task">
-    <div class="migrated icon task-component"></div>
-    <div class="task-component">
-      <%= migration.task.content %>
+<% if @day.migrations %>
+  <% @day.migrations.each do |migration| %>
+    <div class="task">
+      <div class="migrated icon task-component"></div>
+      <div class="task-component">
+        <%= migration.task.content %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
 
 
