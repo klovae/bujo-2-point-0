@@ -151,7 +151,7 @@ form input[type="text"], form input[type="password"], form input[type="email"] {
   font-size: 1em;
 }
 
-form.submit input[type="text"], form.submit input[type="password"], form. input[type="email"] {
+form.submit input[type="text"], form.submit input[type="password"], form.submit input[type="email"] {
   width: 100%;
 }
 
@@ -184,10 +184,17 @@ form.submit input[type=button], form.submit input[type=submit] {
   border: none;
   color: #fff;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 1em;
+  font-size: 1.2em;
   text-decoration: none;
   padding: 12px 20px;
   margin-top: 20px;
+}
+
+div.button {
+  display: inline-block;
+  font-size: 1.2em;
+  margin-right: 10px;
+  margin-bottom: 20px;
 }
 
 /*////// ICON STYLES ///////*/
