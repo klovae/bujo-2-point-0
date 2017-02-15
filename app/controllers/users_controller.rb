@@ -71,7 +71,7 @@ class UsersController < ApplicationController
   post '/signup' do
     if params.none? {|key, value| value == ""}
       if User.find_by(email: params[:email]).nil? && params[:password] == params[:password_check]
-        user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password], past_migration: true)
+        user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
         session[:user_id] = user.id
         flash[:success] = "Account created successfully. Welcome to BuJo 2.0!"
         redirect '/days/today'
