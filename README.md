@@ -8,3 +8,7 @@ For more information about the bullet journal methodology, the best source is th
 
 Bullet Journal is © Ryder Carroll.
 All icons were sourced from Flaticon.com
+
+#Install Instructions
+
+To install, clone or fork the repository, run `bundle install` and you should be good to go. From the terminal, running `shotgun` will let you run the app locally. You can also access a shell for the app using `tux`, which will let you interact with the app's models, associations, and data.
