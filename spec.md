@@ -2,12 +2,15 @@
 
 Specs:
 - [x] Use Sinatra to build the app
+
 Sinatra is what makes it possible to create routes for this app. The main Application Controller (and by inheritance, all the other controllers) is a Sinatra controller because as a class it inherits from Sinatra::Base, which allows the controller to make use of Sinatra's HTTP methods like `get` and `post` to communicate between the user and the app.
 
 - [x] Use ActiveRecord for storing information in a database
+
 ActiveRecord is super important to this app. All the CRUD functionality for all of the models is possible because of ActiveRecord, as well as the relationships between objects, as defined with `has_many`, `has_many, through:`, and `belongs_to`. Without ActiveRecord, all CRUD interactions with the database would have needed to be done manually (as in pre-ActiverRecord labs).
 
 - [x] Include more than one model class (list of model class names e.g. User, Post, Category)
+
 Models:
 * User
 * Day
@@ -16,14 +19,17 @@ Models:
 * Migration
 
 - [x] Include at least one has_many relationship (x has_many y e.g. User has_many Posts)
+
 * User `has_many` days, `has_many` tasks and events through days, and `has_many` migrations through tasks and days
 * Day `has_many` tasks, events, and migrations
 * Task `has_many` migrations
 
 - [x] Include user accounts
+
 User creates an account that gives them access to their "own" bullet journal -- they are the only ones who can see or modify their days, tasks, and events. In the case of this app, I used email as the username because there wasn't really a need for separate usernames because no users are seeing each others' content.
 
 - [x] Ensure that users can't modify content created by other users
+
 All CRUD functionality in the routes for this app either (1) explicitly checks that the desired information belongs only to the current user or (2) implicitly pulls for display information only from the current user. You can see this in my DaysController.
 
 Example of (1):
@@ -47,6 +53,7 @@ get "/days" do
 ```
 
 - [x] Include user input validations
+
 All points of user input include validations. Some of them are embedded in my models like with the User model:
 ```
   validates :first_name, :presence => true
@@ -68,6 +75,7 @@ Or the inputs are checked on form submission. For example, a user can't create a
 ```
 
 - [x] Display validation failures to user with error message (example form URL e.g. /posts/new)
+
 All points where user input is validated also come with error messages that specify what is raising the error. Probably the most thorough error messages can be found in the `post '/signup'` route:
 ```
   post '/signup' do
