@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   end
 
   patch '/settings' do
-    binding.pry
     if params[:password]
       if params[:password] != "" && params[:password] == params[:password_check]
         current_user.update(password: params[:password])
