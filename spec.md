@@ -101,9 +101,21 @@ All points where user input is validated also come with error messages that spec
 
 - [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
+All requirements have been added, and the license for my code has also been included in the root directory.
 
 Confirm
-- [ ] You have a large number of small Git commits
-- [ ] Your commit messages are meaningful
-- [ ] You made the changes in a commit that relate to the commit message
-- [ ] You don't include changes in a commit that aren't related to the commit message
+- [x] You have a large number of small Git commits
+
+As of the time of submission, I will have made over 45 commits to this repo. That said, I think I got a lot better about committing regularly as time went on. Early in the process there were a couple of time where I got caught up in coding and forgot to commit more regularly. In the future I think I may look into setting (or creating) some kind of alarm. Might be a nice feature to have in Atom.
+
+- [x] Your commit messages are meaningful
+
+If anything I think I may have been overly descriptive sometimes, but I did work to make sure they reflected the work I did and the relevant file(s) I worked on.
+
+- [x] You made the changes in a commit that relate to the commit message
+
+Yes; as above, I made sure in all cases that the message related to what I worked on.
+
+- [x] You don't include changes in a commit that aren't related to the commit message
+
+I did a good job with this for the most part but I honestly could have done better, especially in the beginning of the project where it was too easy to do a bunch of work and realize belatedly that it had been a while since I committed. Definitely something I will be more conscious of when starting future projects.
