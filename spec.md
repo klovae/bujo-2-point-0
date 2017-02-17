@@ -39,7 +39,8 @@ Example of (1):
   end
 ```
 Example of (2)
-``` get "/days" do
+```
+get "/days" do
     @days = current_user.days.all
     erb :"/days/index"
   end
