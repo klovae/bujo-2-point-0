@@ -38,6 +38,7 @@ class UsersController < ApplicationController
 
   get '/signup' do
     if !is_logged_in?
+      @user = User.new
       erb :'/users/create_user'
     else
       flash[:success] = "You're already logged in as #{current_user.first_name}"
@@ -46,23 +47,36 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if params.none? {|key, value| value == ""}
-      if User.find_by(email: params[:email]).nil? && params[:password] == params[:password_check]
-        user = User.create(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], password: params[:password])
-        session[:user_id] = user.id
+    if params[:password] == params[:password_check]
+      @user = User.new(
+        first_name: params[:first_name],
+        last_name: params[:last_name],
+        email: params[:email],
+        password: params[:password]
+      )
+      if @user.save
+        session[:user_id] = @user.id
         flash[:success] = "Account created successfully. Welcome to BuJo 2.0!"
         redirect '/days/today'
-      elsif User.find_by(email: params[:email]) && params[:password] == params[:password_check]
-        flash[:error] = "There is already a user associated with that email address."
-        redirect '/signup'
-      elsif params[:password] != params[:password_check]
-        flash[:error] = "Your password entries don't match."
-        redirect '/signup'
+      else
+        flash[:error] = @user.errors.full_messages
+        erb :"/users/create_user"
       end
     else
-      flash[:error] = "Please make sure you have completed all fields before creating your account."
-      redirect '/signup'
+      flash[:error] = "Password don't matc"
+      erb :"/users/create_user"
+
     end
+    #   session[:user_id] = user.id
+    #   flash[:success] = "Account created successfully. Welcome to BuJo 2.0!"
+    #   redirect '/days/today'
+    # elsif User.find_by(email: params[:email]) && params[:password] == params[:password_check]
+    #   flash[:error] = "There is already a user associated with that email address."
+    #   redirect '/signup'
+    # elsif params[:password] != params[:password_check]
+    #   flash[:error] = "Your password entries don't match."
+    #   redirect '/signup'
+    # end
   end
 
 end
