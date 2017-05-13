@@ -86,6 +86,10 @@ div.error-message {
   color: #E3280B;
 }
 
+div.error-message ul li {
+  font-size: 1em;
+}
+
 div.success-message {
   color: #08A854;
 }

@@ -7,7 +7,16 @@
   </div>
 <% elsif flash[:error] %>
   <div class="error-message">
-    <%= flash[:error] %>
+    <% if flash[:error].size == 1 %>
+      <%= flash[:error].flatten %>
+    <% else %>
+      The following errors are preventing you from creating your account:
+      <ul>
+        <% flash[:error].flatten.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 <% end %>
 
@@ -54,7 +63,7 @@
         <label>Confirm Password: </label>
       </td>
       <td class="textbox">
-        <input required type="password" name="password_check" value="">
+        <input required type="password" name="password_confirmation" value="">
       </td>
     </tr>
 
