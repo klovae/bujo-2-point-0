@@ -1,18 +1,18 @@
 <h1>Update Your Settings</h1>
 
 <% if flash[:error] %>
-  <div class="error-message">
-    <% if flash[:error].size == 1 %>
-      <%= flash[:error].flatten %>
-    <% else %>
-      The following errors are preventing you from creating your account:
-      <ul>
-        <% flash[:error].flatten.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
+<div class="error-message">
+  <% if flash[:error].size == 1 %>
+    <%= flash[:error].join %>
+  <% else %>
+    The following errors are preventing you from creating your account:
+    <ul>
+      <% flash[:error].flatten.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
 <% end %>
 
 
@@ -43,7 +43,7 @@
         <label>Email: </label>
       </td>
       <td class="textbox">
-        <input required type="text" name="email" value="<%= @user.email %>">
+        <input required type="email" name="email" value="<%= @user.email %>">
       </dr>
     </tr>
   </table>
@@ -76,7 +76,7 @@
         <label>Confirm Password: </label>
       </td>
       <td class="textbox">
-        <input required type="password" name="password_check" value="">
+        <input required type="password" name="password_confirmation" value="">
       </td>
     </tr>
   </table>

@@ -8,7 +8,7 @@
 <% elsif flash[:error] %>
   <div class="error-message">
     <% if flash[:error].size == 1 %>
-      <%= flash[:error].flatten %>
+      <%= flash[:error].join %>
     <% else %>
       The following errors are preventing you from creating your account:
       <ul>

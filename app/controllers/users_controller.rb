@@ -11,8 +11,9 @@ class UsersController < ApplicationController
   end
 
   patch '/settings' do
-    if params[:password]
-      if current_user.update(password: params[:password])
+
+    if params.include?("password")
+      if current_user.update(password: params[:password], password_confirmation: params[:password_confirmation])
         flash[:success] = "Password updated successfully."
         redirect '/days/today'
       else
@@ -22,8 +23,10 @@ class UsersController < ApplicationController
         redirect '/settings'
       end
 
-    elsif params[:first_name]
-      if current_user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
+    elsif params.include?("first_name")
+          binding.pry
+      current_user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
+      if current_user.first_name == params[:first_name] && current_user.last_name == params[:last_name] && current_user.email == params[:email]
         flash[:success] = "Account settings updated successfully."
         redirect '/days/today'
       else
@@ -32,6 +35,7 @@ class UsersController < ApplicationController
         flash[:error] = error_messages
         redirect '/settings'
       end
+
     end
   end
 
@@ -59,7 +63,7 @@ class UsersController < ApplicationController
     else
       error_messages = []
       @user.errors.messages.each {|key, value| error_messages << value.flatten}
-      flash[:error] = error_messages
+      flash[:error] = error_messages.flatten
       redirect '/signup'
     end
   end
