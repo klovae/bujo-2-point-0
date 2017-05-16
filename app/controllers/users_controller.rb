@@ -13,7 +13,10 @@ class UsersController < ApplicationController
   patch '/settings' do
 
     if params.include?("password")
-      if current_user.update(password: params[:password], password_confirmation: params[:password_confirmation])
+      current_user.password = params[:password]
+      current_user.password_confirmation = params[:password_confirmation]
+      binding.pry
+      if current_user.save(context: :update_password)
         flash[:success] = "Password updated successfully."
         redirect '/days/today'
       else
@@ -24,9 +27,11 @@ class UsersController < ApplicationController
       end
 
     elsif params.include?("first_name")
-          binding.pry
-      current_user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
-      if current_user.first_name == params[:first_name] && current_user.last_name == params[:last_name] && current_user.email == params[:email]
+      current_user.first_name = params[:first_name]
+      current_user.last_name = params[:last_name]
+      current_user.email = params[:email]
+      binding.pry
+      if current_user.save(context: :update_info)
         flash[:success] = "Account settings updated successfully."
         redirect '/days/today'
       else
