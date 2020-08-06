@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'sinatra'
+gem 'sinatra', ">= 2.0.5"
 gem "rack-protection", ">= 1.5.5"
-gem 'activerecord', :require => 'active_record'
+gem 'activerecord', ">=6.0.3.1", :require => 'active_record'
 gem "activesupport", ">= 5.2.4.3"
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake', ">= 12.3.3"

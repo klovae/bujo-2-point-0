@@ -119,7 +119,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord
+  activerecord (>= 6.0.3.1)
   activesupport (>= 5.2.4.3)
   bcrypt
   capybara
@@ -133,7 +133,7 @@ DEPENDENCIES
   require_all
   rspec
   shotgun
-  sinatra
+  sinatra (>= 2.0.5)
   sinatra-activerecord
   sinatra-flash
   sqlite3
