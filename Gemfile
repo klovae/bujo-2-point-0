@@ -1,9 +1,12 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
+gem "rack-protection", ">= 1.5.5"
 gem 'activerecord', :require => 'active_record'
+gem "activesupport", ">= 5.2.4.3"
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
-gem 'rake'
+gem 'rake', ">= 12.3.3"
+gem "nokogiri", ">= 1.10.8"
 gem 'require_all'
 gem 'pg'
 gem 'tux'
