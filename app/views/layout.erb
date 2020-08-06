@@ -11,10 +11,17 @@
       <div id="menu-wrap">
         <a href="/days/today"><img id="logo" src="/images/bujo_logo_color.png" alt="" /></a>
         <div id="menu">
-        
-          <a href="/login">Log In</a>
-          <a href="/signup">Create Account</a>
-    
+          <% if is_logged_in? %>
+            <a href="/days/today">Today</a>
+            <a href="/days/tomorrow">Tomorrow</a>
+            <a href="/tasks">All Tasks</a>
+            <a href="/days">Day Index</a>
+            <a href="/settings">Settings</a>
+            <a href="/logout">Log Out</a>
+          <% else %>
+            <a href="/login">Log In</a>
+            <a href="/signup">Create Account</a>
+          <% end %>
           <div class="line">
           </div>
           <a href="/help">Help</a>

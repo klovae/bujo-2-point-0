@@ -128,6 +128,7 @@ h1.day-title {
 
 .task-component {
   display: inline-block;
+  margin-bottom: 0px;
 }
 
 div.task, div.event-item, div.credit {
@@ -201,6 +202,13 @@ a div.button {
   margin-right: 10px;
   margin-bottom: 20px;
 }
+
+form.task-component input {
+  padding: 0px;
+  margin: 0px 0px 3px 0px;
+}
+
+
 
 /*////// ICON STYLES ///////*/
 
